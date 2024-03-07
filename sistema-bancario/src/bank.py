@@ -56,14 +56,6 @@ class Account:
             return False
         return True
 
-    def __str__(self):
-        return f"""
-            Name:\t{self._client._name}
-            Agency:\t{self._agency}
-            C/C:\t\t{self._number}
-            CPF:\t{self._client._cpf}
-        """
-
 
 class CurrentAccount(Account):
     def __init__(self, number, client):
@@ -95,7 +87,7 @@ class CurrentAccount(Account):
         return f"""\
             Agency:\t{self._agency}
             C/C:\t\t{self._number}
-            Header:\t{self._cliente._nome}
+            Header:\t{self._client._name}
         """
 
 
@@ -117,7 +109,7 @@ class Historic:
 
 
 class Client:
-    def __init__(self, address) -> None:
+    def __init__(self, address):
         self._address = address
         self._accounts = []
 
@@ -152,6 +144,7 @@ class Storage(Transaction):
     def __init__(self, value):
         self._value = value
 
+    @property
     def value(self):
         return self._value
 
@@ -165,6 +158,7 @@ class Draw(Transaction):
     def __init__(self, value):
         self._value = value
 
+    @property
     def value(self):
         return self._value
 
